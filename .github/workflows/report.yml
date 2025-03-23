@@ -27,5 +27,5 @@ jobs:
       - name: Generate Allure Report
         uses: simple-elf/allure-report-action@v1
         with:
-          allure_results_path: ./allure-results
-          gh_pages_branch: gh-pages  # 指定推送到的分支
+          allure_results: ./allure-results
+          gh_pages: gh-pages  # 指定推送到的分支
