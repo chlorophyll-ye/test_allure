@@ -16,7 +16,11 @@ class TestUser:
 
     @allure.story("用户注册功能")
     @allure.title("测试邮箱格式校验")
-    @pytest.mark.parametrize("email", ["test@example.com", "invalid_email"])
-    def test_register_email(self, email):
-        with allure.step(f"验证邮箱格式：{email}"):
-            assert "@" in email, "邮箱格式无效"
+    @pytest.mark.parametrize("email, is_valid", [
+    ("test@example.com", True),
+    ("invalid_email", False)
+])
+def test_register_email(self, email, is_valid):
+    with allure.step(f"验证邮箱格式：{email}"):
+        # 根据预期结果调整断言
+        assert ("@" in email) == is_valid, f"邮箱格式校验不符合预期：{email}"
